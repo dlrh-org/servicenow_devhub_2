@@ -11,13 +11,13 @@ spec:
   type: service
   steps:
     - id: snowCreate
-      name: Snow 2
+      name: Snow
       action: servicenow:now:table:createRecord
       input:
         tableName: u_pessoa
-        requestBody: '{"u_nome":"Vinicius","u_idade":"40"}'
+        requestBody: '{"u_namename":"Vinicius"}'
   output:
     text:
     - title: More information
       content: |
-        **Resultado** `${{ steps['snowCreate'].output.result }}`
+        **Results** `${{ steps['snowCreate'].output.result }}`
