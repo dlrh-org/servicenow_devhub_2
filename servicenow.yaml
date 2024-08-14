@@ -1,0 +1,23 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: snow-create-template
+  title: Service Now template
+  description: Create a record on table 'u_pessoa'
+  tags:
+    - snow
+spec:
+  owner: rhdh
+  type: service
+  steps:
+    - id: snowCreate
+      name: Snow 2
+      action: servicenow:now:table:createRecord
+      input:
+        tableName: u_pessoa
+        requestBody: '{"u_nome":"Vinicius","u_idade":"40"}'
+  output:
+    text:
+    - title: More information
+      content: |
+        **Resultado** `${{ steps['snowCreate'].output.result }}`
