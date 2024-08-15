@@ -29,14 +29,11 @@ spec:
         requestBody: {
           u_namename: "${{ parameters.snowName }}"
         }
-
-  
-
-  output:
-    text:
+    output:
+      text:
       - title: Snow Name Field
-        content:  You Entered Name : "${{ parameters.snowName }}"
+        content: Entered Name : "${{ parameters.snowName }}"
       - title: Sysid
-        content:  `${{ steps['snowCreate'].output.result }}`
+        content: `${{ steps['snowCreate'].output.result }}`
         
        
