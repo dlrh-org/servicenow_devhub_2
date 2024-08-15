@@ -21,7 +21,7 @@ spec:
           title: Requester Name
           type: string      
   steps:
-    - id: snowCreate
+    - id: snowcreate
       name: Snow
       action: servicenow:now:table:createRecord
       input:
@@ -34,6 +34,8 @@ spec:
     text:
     - title: Name Field
       content: Entered Name "${{ parameters.snowName }}"
+    - title: SysID
+      content: `${{ steps.snowcreate.output.result }}`
       
         
        
