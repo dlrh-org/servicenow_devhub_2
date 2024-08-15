@@ -29,7 +29,8 @@ spec:
         requestBody: {
           u_namename: "${{ parameters.snowName }}"
         }
-  output:
+        
+    output:
       text:
       - title: Snow Name Field
         content: Entered Name : "${{ parameters.snowName }}"
