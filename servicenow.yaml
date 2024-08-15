@@ -33,7 +33,7 @@ spec:
   output:
     text:
     - title: Snow Name Field
-      content: Entered Name : "${{ parameters.snowName }}"
+      content: Entered Name "${{ parameters.snowName }}"
       
         
        
