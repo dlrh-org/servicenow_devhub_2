@@ -6,6 +6,7 @@ metadata:
   description: Create a record in ServiceNow on pessoa table
   tags:
     - service-now
+    - vijays-embedded-services
 spec:
   owner: rhdh
   type: service
