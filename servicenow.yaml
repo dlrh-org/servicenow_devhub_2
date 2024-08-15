@@ -35,7 +35,7 @@ spec:
     - title: Name Field
       content: Entered Name "${{ parameters.snowName }}"
     - title: SysID
-      content: Create record with this ID "${{ steps.snowcreate.output.result.sys_id }}"
+      content: Create record with this ID "${{ steps.snowcreate.output.sys_id }}"
       
         
        
