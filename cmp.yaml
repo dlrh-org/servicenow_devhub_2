@@ -14,7 +14,7 @@ spec:
   
 
   parameters:
-    - title: Provide Name Entry for snow table
+    - title: Provide Name Entry for snow table 1.1
       required:
         - employeename
       properties:
@@ -36,4 +36,4 @@ spec:
     - title: Name Field
       content: Entered Name "${{ parameters.employeename }}"
     - title: SysID
-      content: Create record with this System ID "${{ steps.allowaccess.output.sys_id }}"
+      content: Create record with this System ID "${{ steps.allowaccess.result.output.sys_id }}"
