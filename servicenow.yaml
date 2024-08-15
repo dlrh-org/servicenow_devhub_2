@@ -35,4 +35,4 @@ parameters:
     text:
     - title: More information
       content: |
-        **Results** `${{ steps['snowCreate'].output.sysid }}` You Entered Name : "${{ parameters.snowName }}"
+        **Results** `${{ steps['snowCreate'].sysid }}` You Entered Name : "${{ parameters.snowName }}"
