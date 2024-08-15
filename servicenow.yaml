@@ -16,7 +16,7 @@ spec:
       input:
         tableName: u_pessoa
         requestBody: {
-             u_namename: ‘Leon Levy’
+             u_namename: Leon Levy
          }
   output:
     text:
