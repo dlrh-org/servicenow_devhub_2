@@ -10,6 +10,17 @@ metadata:
 spec:
   owner: rhdh
   type: service
+  
+
+  parameters:
+    - title: Provide Name Entry for snow table
+      required:
+        - snowName
+      properties:
+        snowName:
+          title: Requester Name
+          type: string
+        
   steps:
     - id: snowCreate
       name: Snow
@@ -17,10 +28,11 @@ spec:
       input:
         tableName: u_pessoa
         requestBody: {
-             u_namename: Leon Levy
+             u_namename: "${{ parameters.snowName }}"
          }
+
   output:
     text:
     - title: More information
       content: |
-        **Results** `${{ steps['snowCreate'].output.result }}`
+        **Results** `${{ steps['snowCreate'].output.result }}` You Entered Name : "${{ parameters.snowName }}"
