@@ -15,7 +15,9 @@ spec:
       action: servicenow:now:table:createRecord
       input:
         tableName: u_pessoa
-        requestBody: '{"u_namename":"Vinicius"}'
+        requestBody: {
+             u_namename: ‘Pascal’
+         }
   output:
     text:
     - title: More information
