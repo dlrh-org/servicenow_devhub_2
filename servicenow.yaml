@@ -12,14 +12,14 @@ spec:
   type: service
   
 
-  parameters:
-    - title: Provide Name Entry for snow table
-      required:
-        - snowName
-      properties:
-        snowName:
-          title: Requester Name
-          type: string
+parameters:
+  - title: Provide Name Entry for snow table
+    required:
+      - snowName
+    properties:
+      snowName:
+        title: Requester Name
+        type: string
         
   steps:
     - id: snowCreate
