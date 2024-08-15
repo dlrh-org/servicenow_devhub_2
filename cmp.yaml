@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-cloud-market-place
-  title: Pepsico Cloud Market Place 1.6
+  title: Pepsico Cloud Market Place 1.7
   description: Create a record in ServiceNow on cmp table
   tags:
     - service-now
@@ -36,4 +36,4 @@ spec:
     - title: Name Field
       content: Entered Name "${{ parameters.employeename }}"
     - title: SysID
-      content: Create record with this System ID "${{ steps.allowaccess.output.sys_id }}"
+      content: Create record with this System ID "${{ steps.allowaccess.output.result.sys_id }}"
