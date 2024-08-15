@@ -33,6 +33,6 @@ spec:
   
 
   output:
-    links:
+    text:
       - title: SysID
-        url: ${{ steps['snowCreate'].output.sysid }}
+        content: ${{ steps['snowCreate'].output.sysid }}
