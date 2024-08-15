@@ -30,8 +30,9 @@ spec:
           u_namename: "${{ parameters.snowName }}"
         }
 
+  
+
   output:
-    text:
-    - title: More information
-      content: |
-        **Results** `${{ steps['snowCreate'].output.result.sysid }}` You Entered Name : "${{ parameters.snowName }}" SysID : "${{result.sysid }}"
+    links:
+      - title: SysID
+        url: ${{ steps['snowCreate'].output.sysid }}
