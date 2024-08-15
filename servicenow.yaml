@@ -35,4 +35,4 @@ spec:
   output:
     text:
       - title: SysID
-        content: Some sysid :  '${{ steps.snowCreate.output.sys_id }}' More sysid : '${{ steps.snowCreate.output.'sys_id' }}'  The Object : '${{ steps.snowCreate.output }}'  You Entered Name : "${{ parameters.snowName }}"
+        content:  You Entered Name : "${{ parameters.snowName }}"
