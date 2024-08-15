@@ -19,8 +19,7 @@ parameters:
     properties:
       snowName:
         title: Requester Name
-        type: string
-        
+        type: string      
   steps:
     - id: snowCreate
       name: Snow
