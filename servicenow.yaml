@@ -12,23 +12,23 @@ spec:
   type: service
   
 
-parameters:
-  - title: Provide Name Entry for snow table
-    required:
-      - snowName
-    properties:
-      snowName:
-        title: Requester Name
-        type: string      
-steps:
-  - id: snowCreate
-    name: Snow
-    action: servicenow:now:table:createRecord
-    input:
-      tableName: u_pessoa
-      requestBody: {
-        u_namename: "${{ parameters.snowName }}"
-      }
+  parameters:
+    - title: Provide Name Entry for snow table
+      required:
+        - snowName
+      properties:
+        snowName:
+          title: Requester Name
+          type: string      
+  steps:
+    - id: snowCreate
+      name: Snow
+      action: servicenow:now:table:createRecord
+      input:
+        tableName: u_pessoa
+        requestBody: {
+          u_namename: "${{ parameters.snowName }}"
+        }
 
 output:
   text:
