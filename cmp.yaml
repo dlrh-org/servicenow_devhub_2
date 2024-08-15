@@ -16,9 +16,9 @@ spec:
   parameters:
     - title: Provide Name Entry for snow table
       required:
-        - pepiscoemployeename
+        - employeename
       properties:
-        snowName:
+        employeename:
           title: Requester Name
           type: string      
   steps:
@@ -28,12 +28,12 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          u_name: "${{ parameters.employeeName }}"
+          u_name: "${{ parameters.employeename }}"
         }
         
   output:
     text:
     - title: Name Field
-      content: Entered Name "${{ parameters.snowName }}"
+      content: Entered Name "${{ parameters.employeename }}"
     - title: SysID
       content: Create record with this ID "${{ steps.snowcreate.output.sys_id }}"
