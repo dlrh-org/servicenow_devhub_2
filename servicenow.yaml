@@ -30,8 +30,8 @@ spec:
           u_namename: "${{ parameters.snowName }}"
         }
 
-output:
-  text:
-  - title: More information
-    content: |
-      **Results** `${{ steps['snowCreate'].output.result }}` You Entered Name : "${{ parameters.snowName }}"
+  output:
+    text:
+    - title: More information
+      content: |
+        **Results** `${{ steps['snowCreate'].output.result }}` You Entered Name : "${{ parameters.snowName }}"
