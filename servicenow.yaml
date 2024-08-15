@@ -34,4 +34,4 @@ spec:
     text:
     - title: More information
       content: |
-        **Results** `${{ steps['snowCreate'].output.result }}` You Entered Name : "${{ parameters.snowName }}" SysID : "${{result.sysid }}"
+        **Results** `${{ steps['snowCreate'].output.result.sysid }}` You Entered Name : "${{ parameters.snowName }}" SysID : "${{result.sysid }}"
