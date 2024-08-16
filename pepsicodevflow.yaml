@@ -50,49 +50,52 @@ spec:
           description: Help others understand what this website is for.
           default: A cool quarkus app
       - title: Image Registry Information
-        image_registry:
-          title: Image Registry
-          type: string
-          enum:
-            - Openshift
-            - Quay
-            - JFrog
-      dependencies:
-        image_registry:
-          oneOf:
-            - properties:
-                image_registry:
-                  enum:
+        required:
+          - image_registry
+        properties:
+          image_registry:
+            title: Image Registry
+            type: string
+            enum:
+              - Openshift
+              - Quay
+              - JFrog
+        dependencies:
+          image_registry:
+            oneOf:
+              - properties:
+                  image_registry:
+                    enum:
                     - Openshift
-                image_host:
-                  title: Image Host
-                  type: string
-                  description: Host for storing image
-                  default: image-registry.openshift-image-registry.svc:5000
-                image_tag:
-                  title: Image Tag
-                  default: latest
-                  type: string
-                  description: Build Image tag
-            - properties:
-                image_registry:
-                  enum:
-                    - Quay
-                image_host:
-                  title: Image Host
-                  type: string
-                  description: Host for storing image
-                  default: quay-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
-                image_organization:
-                  title: Organization
-                  type: string
-                  description: Name of the Quay Organization
-                  default: quayadmin
-                image_tag:
-                  title: Image Tag
-                  default: latest
-                  type: string
-                  description: Build Image tag
+                  image_host:
+                    title: Image Host
+                    type: string
+                    description: Host for storing image
+                    default: image-registry.openshift-image-registry.svc:5000
+                  image_tag:
+                    title: Image Tag
+                    default: latest
+                    type: string
+                    description: Build Image tag
+              - properties:
+                  image_registry:
+                    enum:
+                      - Quay
+                  image_host:
+                    title: Image Host
+                    type: string
+                    description: Host for storing image
+                    default: quay-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
+                  image_organization:
+                    title: Organization
+                    type: string
+                    description: Name of the Quay Organization
+                    default: quayadmin
+                  image_tag:
+                    title: Image Tag
+                    default: latest
+                    type: string
+                    description: Build Image tag
     - title: Application repository Information
       required:
         - repo
