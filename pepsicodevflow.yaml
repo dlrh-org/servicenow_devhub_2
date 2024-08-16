@@ -172,10 +172,9 @@ spec:
 
     - id: publish
       name: Publish
-      action: publish:gitlab
+      action: roadiehq:utils:sleep
       input:
-        repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}"
-        repoVisibility: public
+        amount: 1
 
     - id: register
       name: Register
