@@ -29,6 +29,28 @@ spec:
         component_id:
           title: Application Project Name
           type: string 
+        artifact_id:
+          title: Artifact Id
+          type: string
+          default: quarkus-app
+          description: Maven Artifact Id
+        group_id:
+          title: Group Id
+          type: string
+          default: redhat.janus
+          description: Maven Group Id
+        java_package_name:
+          title: Java Package Name
+          default: org.redhat.janus
+          type: string
+          description: Name for the java package. eg (com.redhat.blah)
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+          default: A cool quarkus app
+    - title: Provide Image Registry Information
+
         image_registry:
           title: Image Registry
           type: string
