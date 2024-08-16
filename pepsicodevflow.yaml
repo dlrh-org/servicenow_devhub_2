@@ -32,7 +32,7 @@ spec:
             - Openshift
             - Quay
             - JFrog
-        dependencies:
+      dependencies:
         image_registry:
           oneOf:
             - properties:
