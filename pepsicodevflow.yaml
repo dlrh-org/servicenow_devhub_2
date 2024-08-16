@@ -225,9 +225,8 @@ spec:
       action: roadiehq:utils:sleep
       input:
         amount: 1
-
     - id: create-argocd-resources
-      name: Create ArgoCD Resources
+      name: Creating argocd resources
       action: roadiehq:utils:sleep
       input:
         amount: 1
