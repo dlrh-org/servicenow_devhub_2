@@ -6,24 +6,29 @@ metadata:
   description: Create a record in ServiceNow on pessoa table
   tags:
     - service-now
-    - vijays-embedded-services
+    - pepsico
+    - pepsico-dev-flow
+    - argocd
+    - azuredevops
+    - tekton
+    - sonarqube
 spec:
-  owner: rhdh
+  owner: pepsico
   type: service
   
 
   parameters:
-    - title: Provide Name Entry for snow table
+    - title: Service Now SSYD to Retrieve the approval 
       required:
-        - snowName
+        - snowSysid
       properties:
         snowName:
-          title: Requester Name
+          title: Service Now System ID
           type: string      
   steps:
     - id: snowcreate
       name: Snow
-      action: servicenow:now:table:createRecord
+      action: servicenow:now:table:retrieveRecord
       input:
         tableName: u_pessoa
         requestBody: {
