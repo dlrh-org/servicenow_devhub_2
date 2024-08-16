@@ -18,14 +18,13 @@ spec:
   
 
   parameters:
-    - title: Provide Approval Code ID for the request 
+    - title: Provide Dev Flow Variables 
       required:
         - approvalcode
       properties:
         approvalcode:
           title: Service Now Approval Code
           type: string 
-     - title: Provide Project Name to Create for GitOps and Pipeline Usage
       required:
         - component_id
       properties:
