@@ -9,7 +9,7 @@ metadata:
     - pepsico
     - cloud-market-place
 spec:
-  owner: pepsico
+  owner: rhdh
   type: service
   
 
