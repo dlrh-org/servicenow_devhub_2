@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 3.1
+  title: Pepsico Dev Flow template 3.2
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -32,18 +32,18 @@ spec:
         artifact_id:
           title: Artifact Id
           type: string
-          default: quarkus-app
+          default: pepsico-app
           description: Maven Artifact Id
         group_id:
           title: Group Id
           type: string
-          default: redhat.janus
+          default: pepsico-mvn
           description: Maven Group Id
         java_package_name:
-          title: Java Package Name
-          default: org.redhat.janus
+          title: Package Name
+          default: com.pepsico
           type: string
-          description: Name for the java package. eg (com.redhat.blah)
+          description: Name for the package. eg (com.pepsico.blah)
         description:
           title: Description
           type: string
