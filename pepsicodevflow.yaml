@@ -13,7 +13,7 @@ metadata:
     - tekton
     - sonarqube
 spec:
-  owner: pepsico
+  owner: rhdh
   type: service
   
 
