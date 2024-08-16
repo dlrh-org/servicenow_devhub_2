@@ -18,12 +18,12 @@ spec:
   
 
   parameters:
-    - title: Service Now SSYD to Retrieve the approval 
+    - title: Service Now Approval Code
       required:
-        - snowSysid
+        - snowsysid
       properties:
         snowName:
-          title: snowSysid
+          title: Service Now Approval Code
           type: string      
   steps:
     - id: snowretrieve
@@ -32,15 +32,15 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          sys_id: "${{ parameters.snowSysid }}"
+          sys_id: "${{ parameters.snowsysid }}"
         }
         
   output:
     text:
     - title: Name Field
       content: Retrieve Record
-    - title: SysID
-      content: Create record with this ID "${{ steps.snowretrieve.output.sys_id }}"
+    - title: Service Now Approval Code
+      content: Flow Approved with this code ID "${{ steps.snowretrieve.output.sys_id }}"
       
         
        
