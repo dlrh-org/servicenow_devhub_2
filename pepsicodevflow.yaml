@@ -20,7 +20,7 @@ spec:
   parameters:
     - title: Service Now Approval Code
       required:
-        - snowsysid
+        - snowsysid1
       properties:
         snowName:
           title: Service Now Approval Code
@@ -32,7 +32,7 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          sys_id: "${{ parameters.snowsysid }}"
+          sys_id: "${{ parameters.snowsysid1 }}"
         }
         
   output:
