@@ -37,7 +37,7 @@ spec:
   output:
     text:
     - title: Service Now Approval Code
-      content: Flow Approved with this code ID "${{ steps.snowretrieve.output.sys_id }}"
+      content: Flow Approved with this code ID "${{ parameters.employeeapp }}"
       
         
        
