@@ -20,7 +20,7 @@ spec:
   parameters:
     - title: Provide Name Entry for snow table 
       required:
-        - employeename
+        - sysid
       properties:
         employeename:
           title: Requester Name
@@ -32,7 +32,7 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          sys_id: "${{ parameters.snowsysid1 }}"
+          sys_id: "${{ parameters.sysid }}"
         }
         
   output:
