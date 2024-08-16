@@ -23,7 +23,7 @@ spec:
         - snowSysid
       properties:
         snowName:
-          title: Service Now System ID
+          title: snowSysid
           type: string      
   steps:
     - id: snowretrieve
