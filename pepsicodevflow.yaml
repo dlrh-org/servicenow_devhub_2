@@ -178,10 +178,9 @@ spec:
 
     - id: register
       name: Register
-      action: catalog:register
+      action: roadiehq:utils:sleep
       input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
+        amount: 1
 
     - id: template-gitops-deployment
       name: Generating Deployment Resources
