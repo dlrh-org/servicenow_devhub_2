@@ -222,13 +222,9 @@ spec:
 
     - id: publish-gitops
       name: Publishing to Resource Repository
-      action: publish:gitlab
+      action: roadiehq:utils:sleep
       input:
-        repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}-gitops"
-        title: gitops resources for ${{ parameters.component_id }}
-        description: gitops resources for ${{ parameters.component_id }}
-        sourcePath: ./tenant-gitops
-        repoVisibility: public
+        amount: 1
 
     - id: create-argocd-resources
       name: Create ArgoCD Resources
