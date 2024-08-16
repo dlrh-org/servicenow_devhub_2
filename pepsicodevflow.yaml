@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 3.0
+  title: Pepsico Dev Flow template 3.1
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -48,54 +48,73 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
-          default: A cool quarkus app
-      - title: Image Registry Information
-        required:
-          - image_registry
-        properties:
-          image_registry:
-            title: Image Registry
-            type: string
-            enum:
-              - Openshift
-              - Quay
-              - JFrog
-        dependencies:
-          image_registry:
-            oneOf:
-              - properties:
-                  image_registry:
-                    enum:
-                    - Openshift
-                  image_host:
-                    title: Image Host
-                    type: string
-                    description: Host for storing image
-                    default: image-registry.openshift-image-registry.svc:5000
-                  image_tag:
-                    title: Image Tag
-                    default: latest
-                    type: string
-                    description: Build Image tag
-              - properties:
-                  image_registry:
-                    enum:
-                      - Quay
-                  image_host:
-                    title: Image Host
-                    type: string
-                    description: Host for storing image
-                    default: quay-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
-                  image_organization:
-                    title: Organization
-                    type: string
-                    description: Name of the Quay Organization
-                    default: quayadmin
-                  image_tag:
-                    title: Image Tag
-                    default: latest
-                    type: string
-                    description: Build Image tag
+          default: A pepsico app
+    - title: Provide Image Registry Information
+      required:
+        - image_registry
+      properties:
+        image_registry:
+          title: Image Registry
+          type: string
+          enum:
+            - Openshift
+            - Quay
+            - JFrog
+      dependencies:
+        image_registry:
+          oneOf:
+          - properties:
+              image_registry:
+                 enum:
+                   - Openshift
+              image_host:
+                title: Image Host
+                type: string
+                description: Host for storing image
+                default: image-registry.openshift-image-registry.svc:5000
+              image_tag:
+                title: Image Tag
+                default: latest             
+                type: string
+                description: Build Image tag
+          - properties:
+              image_registry:
+                  enum:
+                    - Quay
+              image_host:
+                 title: Image Host
+                 type: string
+                 description: Host for storing image
+                 default: quay-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
+              image_organization:
+                 title: Organization
+                 type: string
+                 description: Name of the Quay Organization
+                 default: quayadmin
+              image_tag:
+                 title: Image Tag
+                 default: latest
+                 type: string
+                 description: Build Image tag
+          - properties:
+              image_registry:
+                 enum:
+                  - JFrog
+              image_host:
+                 title: Image Host
+                 type: string
+                 description: Host for storing image
+                 default: jfrog-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com  
+              image_organization:
+                 title: Organization
+                 type: string
+                 description: Name of the JFrog Organization
+                 default: jfrogadmin
+              image_tag:
+                 title: Image Tag
+                 default: latest
+                 type: string
+                 description: Build Image tag
     - title: Application repository Information
       required:
         - repo
@@ -223,3 +242,4 @@ spec:
       
         
        
+
