@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: snow-create-template
-  title: Service Now template
+  name: pepsico-dev-template
+  title: Pepsico Dev Flow template
   description: Create a record in ServiceNow on pessoa table
   tags:
     - service-now
