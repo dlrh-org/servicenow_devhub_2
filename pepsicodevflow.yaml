@@ -18,12 +18,12 @@ spec:
   
 
   parameters:
-    - title: Provide Name Entry for snow table 
+    - title: Provide Approval Code ID for the request 
       required:
-        - employeeapp
+        - approvalcode
       properties:
-        employeename:
-          title: Requester Name
+        approvalcode:
+          title: Service Now Approval Code
           type: string         
   steps:
     - id: snowretrieve
