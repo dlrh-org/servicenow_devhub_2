@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 3.3
+  title: Pepsico Dev Flow template 3.4
   description: The Pepsico Dev Flow
   tags:
     - service-now
