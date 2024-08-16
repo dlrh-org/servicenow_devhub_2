@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 2.5
+  title: Pepsico Dev Flow template 2.6
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -24,6 +24,9 @@ spec:
       properties:
         approvalcode:
           title: Service Now Approval Code
+          type: string 
+        componentid:
+          title: Application Project Name
           type: string 
         image_registry:
           title: Image Registry
