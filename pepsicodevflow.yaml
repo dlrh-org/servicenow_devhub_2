@@ -50,8 +50,7 @@ spec:
           description: Help others understand what this website is for.
           default: A cool quarkus app
     - title: Provide Image Registry Information
-
-        image_registry:
+      image_registry:
           title: Image Registry
           type: string
           enum:
