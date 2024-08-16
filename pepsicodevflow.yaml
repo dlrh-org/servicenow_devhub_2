@@ -21,7 +21,7 @@ spec:
     - title: Provide Dev Flow Variables 
       required:
         - approvalcode
-        -component_id
+        - component_id
       properties:
         approvalcode:
           title: Service Now Approval Code
