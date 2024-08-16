@@ -18,6 +18,13 @@ spec:
   
 
   parameters:
+    - title: Provide Name Entry for snow table 
+      required:
+        - empl
+      properties:
+        employeename:
+          title: EMP
+          type: string  
     - title: Service Now Approval Code
       required:
         - snowsysid1
