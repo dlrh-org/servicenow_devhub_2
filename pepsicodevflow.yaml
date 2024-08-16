@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.6
+  title: Pepsico Dev Flow template 1.7
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -20,11 +20,11 @@ spec:
   parameters:
     - title: Provide Name Entry for snow table 
       required:
-        - employeeapp
+        - employeename
       properties:
         employeename:
-          title: Requester APP
-          type: string        
+          title: Requester Name
+          type: string         
   steps:
     - id: snowretrieve
       name: Snow
@@ -32,7 +32,7 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          sysId: "${{ parameters.employeeapp }}"
+          sysId: "${{ parameters.employeename }}"
         }
         
   output:
