@@ -32,7 +32,7 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          sysId: "${{ parameters.snowSysid }}"
+          sys_id: "${{ parameters.snowSysid }}"
         }
         
   output:
