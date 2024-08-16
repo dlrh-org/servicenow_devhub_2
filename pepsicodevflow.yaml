@@ -40,7 +40,7 @@ spec:
     - title: Name Field
       content: Retrieve Record
     - title: SysID
-      content: Create record with this ID "${{ steps.snowcreate.output.sys_id }}"
+      content: Create record with this ID "${{ steps.snowretrieve.output.sys_id }}"
       
         
        
