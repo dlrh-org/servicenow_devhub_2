@@ -232,7 +232,7 @@ spec:
         amount: 1
 
     - id: provison pipeline
-      name: Provision Pipeline - ${{ parameters.pipeline }}
+      name: Provision Pipeline - "${{ parameters.pipeline }}"
       action: roadiehq:utils:sleep
       input:
         amount: 1
