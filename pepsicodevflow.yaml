@@ -26,7 +26,6 @@ spec:
         approvalcode:
           title: Service Now Approval Code
           type: string 
-      properties:
         component_id:
           title: Application Project Name
           type: string 
