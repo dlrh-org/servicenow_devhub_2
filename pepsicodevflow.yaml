@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template
+  title: Pepsico Dev Flow template 1.0
   description: Create a record in ServiceNow on pessoa table
   tags:
     - service-now
@@ -26,19 +26,18 @@ spec:
           title: Service Now System ID
           type: string      
   steps:
-    - id: snowcreate
+    - id: snowretrieve
       name: Snow
       action: servicenow:now:table:retrieveRecord
-      input:
-        tableName: u_pessoa
+      tableName: u_employeename
         requestBody: {
-          u_namename: "${{ parameters.snowName }}"
+          sysId: "${{ parameters.snowSysid }}"
         }
         
   output:
     text:
     - title: Name Field
-      content: Entered Name "${{ parameters.snowName }}"
+      content: Retrieve Record
     - title: SysID
       content: Create record with this ID "${{ steps.snowcreate.output.sys_id }}"
       
