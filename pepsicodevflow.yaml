@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 2.4
+  title: Pepsico Dev Flow template 2.5
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -90,14 +90,7 @@ spec:
               default: development
               enum:
                 - development
-            verify_commits:
-              title: Verify Commits
-              type: string
-              description: Verify Git repository commits using Red Hat’s Trusted Artifact Signer (TAS) service
-              default: disabled
-              enum:
-                - enabled
-                - disabled
+            
          
 
 
