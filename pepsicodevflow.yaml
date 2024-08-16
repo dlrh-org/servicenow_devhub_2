@@ -20,10 +20,10 @@ spec:
   parameters:
     - title: Provide Name Entry for snow table 
       required:
-        - sysid
+        - approval
       properties:
         employeename:
-          title: Approvals
+          title: Approval ID
           type: string     
   steps:
     - id: snowretrieve
@@ -32,7 +32,7 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          sysId: "${{ parameters.sysid }}"
+          sysId: "${{ parameters.approval }}"
         }
         
   output:
