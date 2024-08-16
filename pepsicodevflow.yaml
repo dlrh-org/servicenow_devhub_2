@@ -29,7 +29,8 @@ spec:
     - id: snowretrieve
       name: Snow
       action: servicenow:now:table:retrieveRecord
-      tableName: u_employeename
+      input:
+        tableName: u_employeename
         requestBody: {
           sysId: "${{ parameters.snowSysid }}"
         }
