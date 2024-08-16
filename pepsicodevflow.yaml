@@ -137,6 +137,17 @@ spec:
               default: development
               enum:
                 - development
+    - title: Pipeline Selection
+      required:
+        - pipeline
+      properties:
+        pipeline:
+          title: Pick Your Project's Pipeline
+          type: string
+          enum:
+            - AzureDevOps
+            - Tekton
+            
             
          
 
@@ -221,13 +232,16 @@ spec:
 
     - id: create-argocd-resources
       name: Create ArgoCD Resources
-      action: argocd:create-resources
+     action: roadiehq:utils:sleep
       input:
-        appName: ${{ parameters.component_id }}-bootstrap
-        argoInstance: main
-        namespace: janus-argocd
-        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
-        path: 'argocd/'
+        amount: 1
+
+    - id: provison pipeline
+      name: Provision Pipeline - ${{ parameters.pipeline }}
+     action: roadiehq:utils:sleep
+      input:
+        amount: 1
+
 
 
     
