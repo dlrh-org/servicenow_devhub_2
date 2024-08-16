@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.8
+  title: Pepsico Dev Flow template 1.9
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -20,7 +20,7 @@ spec:
   parameters:
     - title: Provide Name Entry for snow table 
       required:
-        - employeename
+        - employeeapp
       properties:
         employeename:
           title: Requester Name
@@ -31,13 +31,11 @@ spec:
       action: servicenow:now:table:retrieveRecord
       input:
         tableName: u_employeename
-        sysId: "${{ parameters.employeename }}"
+        sysId: "${{ parameters.employeeapp }}"
         
         
   output:
     text:
-    - title: Name Field
-      content: Retrieve Record
     - title: Service Now Approval Code
       content: Flow Approved with this code ID "${{ steps.snowretrieve.output.sys_id }}"
       
