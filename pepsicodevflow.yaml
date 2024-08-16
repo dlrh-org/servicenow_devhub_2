@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 2.1
+  title: Pepsico Dev Flow template 2.2
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -31,13 +31,13 @@ spec:
       action: servicenow:now:table:retrieveRecord
       input:
         tableName: u_employeename
-        sysId: 5f808d7193441610576e35918bba109c
+        sysId: "${{ parameters.approvalcode }}"
         
         
   output:
     text:
     - title: Service Now Approval Code
-      content: Flow Approved with this code ID "${{ parameters.employeeapp }}"
+      content: Flow Approved with this code ID "${{ parameters.approvalcode }}"
       
         
        
