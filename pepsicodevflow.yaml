@@ -228,13 +228,13 @@ spec:
 
     - id: create-argocd-resources
       name: Create ArgoCD Resources
-     action: roadiehq:utils:sleep
+      action: roadiehq:utils:sleep
       input:
         amount: 1
 
     - id: provison pipeline
       name: Provision Pipeline - ${{ parameters.pipeline }}
-     action: roadiehq:utils:sleep
+      action: roadiehq:utils:sleep
       input:
         amount: 1
 
