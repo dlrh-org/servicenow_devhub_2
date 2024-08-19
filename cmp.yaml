@@ -34,7 +34,9 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          employeename: "${{ parameters.employeename }}"
+          u_employeename: "${{ parameters.employeename }}"
+          u_department: "${{ parameters.department }}"
+          u_project: "${{ parameters.project }}"
         }
         
   output:
