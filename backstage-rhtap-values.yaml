@@ -168,13 +168,13 @@ upstream:
         reading:
           allow:
             - host: '*.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com'
-        servicenow:
-          # The base url of the ServiceNow instance.
-          baseUrl: https://xxxxxxxxxxxxxx.service-now.com/
-          # The username to use for authentication.
-          username: admin
-          # The password to use for authentication.
-          password: xxxxxxxxxxxxxxxxxxxxx
+      servicenow:
+        # The base url of the ServiceNow instance.
+        baseUrl: https://xxxxxxxxxxxxxx.service-now.com/
+        # The username to use for authentication.
+        username: admin
+        # The password to use for authentication.
+        password: xxxxxxxxxxxxxxxxxxxxx
 
       integrations:
         gitlab:
