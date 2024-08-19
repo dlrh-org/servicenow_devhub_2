@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 3.4
+  title: Pepsico Dev Flow template 3.5
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -154,7 +154,7 @@ spec:
 
   steps:
     - id: snowretrieve
-      name: Snow
+      name: Verify ServiceNow Approval
       action: servicenow:now:table:retrieveRecord
       input:
         tableName: u_employeename
@@ -225,6 +225,13 @@ spec:
       action: roadiehq:utils:sleep
       input:
         amount: 1
+        
+    - id: sonarq
+      name: Enabling SonarQube
+      action: roadiehq:utils:sleep
+      input:
+        amount: 1
+        
     - id: create-argocd-resources
       name: Creating argocd resources
       action: roadiehq:utils:sleep
@@ -232,7 +239,7 @@ spec:
         amount: 1
 
     - id: provison pipeline
-      name: Provision Pipeline
+      name: Provision Pipeline 
       action: roadiehq:utils:sleep
       input:
         amount: 1
