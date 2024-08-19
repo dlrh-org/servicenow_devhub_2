@@ -181,7 +181,7 @@ upstream:
         - host: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
           baseUrl: https://gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
           apiBaseUrl: https://gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com/api/v4
-          token: glpat-P1CKugPsaEzvEXiV2zjL
+          token: xxxxxxxxxxxxxxxxxxxxxxxxxx
 
       proxy:
         endpoints:
