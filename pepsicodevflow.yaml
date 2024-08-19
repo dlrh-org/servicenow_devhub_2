@@ -136,7 +136,17 @@ spec:
               description: Your SCM host organization/group
               default: development
               enum:
-                - development
+                - development 
+            verify_commits:
+              title: Verify Commits
+              type: string
+              description: Verify Git repository commits using Red Hat’s Trusted Artifact Signer (TAS)
+              default: disabled
+              enum:
+                - enabled
+                - disabled
+
+ 
     - title: Pipeline Selection
       required:
         - pipeline
