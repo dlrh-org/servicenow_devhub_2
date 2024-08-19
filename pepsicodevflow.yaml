@@ -248,13 +248,13 @@ spec:
       name: Gitlab Verification
       action: debug:log
       input:
-        message: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
+        message: Your Code is located at https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
       
     - id: pipeline-verification
       name: Pipeline Verification
       action: debug:log
       input:
-        message: ${{ parameters.pipeline }}
+        message: Pipeline Provisioned with ${{ parameters.pipeline }}
 
     - id: reg-verification
       name: Registry Verification
@@ -270,6 +270,9 @@ spec:
     text:
     - title: Service Now Approval Code
       content: Flow Approved with this code ID $${{ steps.snowretrieve.output.result.sys_id }}
+    - title: Your Code in GitLab
+      content: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
+       
       
         
        
