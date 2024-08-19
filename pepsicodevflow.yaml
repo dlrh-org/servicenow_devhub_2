@@ -85,7 +85,7 @@ spec:
                  title: Image Host
                  type: string
                  description: Host for storing image
-                 default: quay-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
+                 default: quay-b5hxl.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
               image_organization:
                  title: Organization
                  type: string
@@ -104,7 +104,7 @@ spec:
                  title: Image Host
                  type: string
                  description: Host for storing image
-                 default: jfrog-b5hxl.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com  
+                 default: jfrog-b5hxl.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com  
               image_organization:
                  title: Organization
                  type: string
@@ -127,9 +127,8 @@ spec:
               title: Repo Host
               type: string
               description: Your SCM host
-              default: gitlab-gitlab.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
-              enum:
-                - gitlab-gitlab.apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
+              default: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
+                - gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
             owner:
               title: Repo Owner
               type: string
@@ -174,7 +173,7 @@ spec:
           artifact_id: ${{ parameters.artifact_id }}
           java_package_name: ${{ parameters.java_package_name }}
           owner: ${{ user.entity.metadata.name }}
-          cluster: .apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
+          cluster: .apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
           host: ${{ parameters.repo.host }}
           destination: ${{ parameters.repo.owner }}/${{ parameters.component_id }}
           quay_destination: ${{ parameters.image_organization}}/${{ parameters.component_id }}
@@ -206,7 +205,7 @@ spec:
           source_repository: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
           repository_name: ${{parameters.component_id}}
           git_owner: ${{ parameters.repo.owner }}
-          cluster: .apps.cluster-b5hxl.b5hxl.sandbox1689.opentlc.com
+          cluster: .apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
           namespace: ${{ parameters.component_id }}-dev
           image_registry: ${{ parameters.image_registry }}
           image_host: ${{ parameters.image_host }}
