@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.2
+  title: Pepsico Dev Flow template 1.3
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -180,18 +180,32 @@ spec:
           quay_destination: ${{ parameters.image_organization}}/${{ parameters.component_id }}
           port: 8080
           verify_commits: ${{ parameters.repo.verify_commits }}
-
     - id: publish
       name: Publish
-      action: roadiehq:utils:sleep
+      action: publish:gitlab
       input:
-        amount: 1
+        repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}"
+        repoVisibility: public
 
     - id: register
       name: Register
-      action: roadiehq:utils:sleep
+      action: catalog:register
       input:
-        amount: 1
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+      
+
+   # - id: publish
+   #   name: Publish
+   #   action: roadiehq:utils:sleep
+   #   input:
+   #    amount: 1
+   #
+   # - id: register
+   #   name: Register
+   #   action: roadiehq:utils:sleep
+   #   input:
+   #    amount: 1
 
     - id: template-gitops-deployment
       name: Generating Deployment Resources
