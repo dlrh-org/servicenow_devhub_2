@@ -20,7 +20,13 @@ spec:
       properties:
         employeename:
           title: Requester Name
-          type: string      
+          type: string  
+        department:
+          title: Requester's Department
+          type: string  
+        project:
+          title: Requester's Project
+          type: string  
   steps:
     - id: snowcreate
       name: Snow
@@ -28,7 +34,7 @@ spec:
       input:
         tableName: u_employeename
         requestBody: {
-          u_name: "${{ parameters.employeename }}"
+          employeename: "${{ parameters.employeename }}"
         }
         
   output:
