@@ -254,13 +254,13 @@ spec:
       name: Pipeline Verification
       action: debug:log
       input:
-        message: Selected Pipeline is: ${{ parameters.pipeline }}
+        message: ${{ parameters.pipeline }}
 
     - id: reg-verification
       name: Registry Verification
       action: debug:log
       input:
-        message: Selected Image Registry is: ${{ parameters.image_registry }}
+        message: Selected Image Registry is ${{ parameters.image_registry }}
       
 
     
