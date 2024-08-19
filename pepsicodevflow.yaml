@@ -85,7 +85,7 @@ spec:
                  title: Image Host
                  type: string
                  description: Host for storing image
-                 default: quay-b5hxl.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
+                 default: quay-qmdjh.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
               image_organization:
                  title: Organization
                  type: string
@@ -104,7 +104,7 @@ spec:
                  title: Image Host
                  type: string
                  description: Host for storing image
-                 default: jfrog-b5hxl.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com  
+                 default: jfrog-qmdjh.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com  
               image_organization:
                  title: Organization
                  type: string
@@ -128,6 +128,7 @@ spec:
               type: string
               description: Your SCM host
               default: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
+              enum:
                 - gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
             owner:
               title: Repo Owner
