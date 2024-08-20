@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.7
+  title: Pepsico Dev Flow template 1.8
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -211,22 +211,6 @@ spec:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
-
-    
-      
-
-   # - id: publish
-   #   name: Publish
-   #   action: roadiehq:utils:sleep
-   #   input:
-   #    amount: 1
-   #
-   # - id: register
-   #   name: Register
-   #   action: roadiehq:utils:sleep
-   #   input:
-   #    amount: 1
-
     - id: template-gitops-deployment
       name: Generating Deployment Resources
       action: fetch:template
@@ -265,6 +249,14 @@ spec:
       action: roadiehq:utils:sleep
       input:
         amount: 1
+
+     - id: argocd-verification
+      name: ARGOCD Verification
+      action: debug:log
+      input:
+        message: repo  https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
+        message: app name  ${{ parameters.component_id }}-bootstrap
+      
         
     - id: create-argocd-resources
       name: Create ArgoCD Resources
