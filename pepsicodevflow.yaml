@@ -250,7 +250,7 @@ spec:
       input:
         amount: 1
 
-     - id: argocd-verification
+    - id: argocd-verification
       name: ARGOCD Verification
       action: debug:log
       input:
