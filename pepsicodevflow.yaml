@@ -255,8 +255,7 @@ spec:
       action: debug:log
       input:
         message: repo  https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
-        message: app name  ${{ parameters.component_id }}-bootstrap
-      
+        
         
     - id: create-argocd-resources
       name: Create ArgoCD Resources
