@@ -306,11 +306,6 @@ spec:
         
   output:
     text:
-    - title: Source Code Repository
-      url: ${{ steps.publish.output.remoteUrl }}
-    - title: Open Component in catalog
-      icon: catalog
-      entityRef: ${{ steps.register.output.entityRef }}
     - title: Service Now Approval Code
       content: Flow Approved with this code ID $${{ steps.snowretrieve.output.result.sys_id }}
     - title: Your Code in GitLab
