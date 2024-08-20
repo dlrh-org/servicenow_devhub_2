@@ -310,9 +310,13 @@ spec:
       content: Flow Approved with this code ID $${{ steps.snowretrieve.output.result.sys_id }}
     - title: Your Code in GitLab
       content: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
-    - title: Open Component in catalog
+    links:
+      - title: Source Code Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open Component in catalog
         icon: catalog
         entityRef: ${{ steps.register.output.entityRef }}
+
 
 
        
