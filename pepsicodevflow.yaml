@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.8
+  title: Pepsico Dev Flow template 1.9
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -163,12 +163,14 @@ spec:
 
 
   steps:
+  
     - id: snowretrieve
       name: Verify ServiceNow Approval
       action: servicenow:now:table:retrieveRecord
       input:
         tableName: u_employeename
         sysId: "${{ parameters.approvalcode }}"
+        
     - id: template
       name: Fetch Skeleton + Template
       action: fetch:template
@@ -240,9 +242,25 @@ spec:
 
     - id: publish-gitops
       name: Publishing to Resource Repository
-      action: roadiehq:utils:sleep
+      action: publish:gitlab
       input:
-        amount: 1
+        repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}-gitops"
+        title: gitops resources for ${{ parameters.component_id }}
+        description: gitops resources for ${{ parameters.component_id }}
+        sourcePath: ./tenant-gitops
+        repoVisibility: public
+
+    - id: create-argocd-resources
+      name: Create ArgoCD Resources
+      action: argocd:create-resources
+      input:
+        appName: ${{ parameters.component_id }}-bootstrap
+        argoInstance: main
+        namespace: janus-argocd
+        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
+        path: 'argocd/'
+
+
         
     - id: sonarq
       name: Enabling SonarQube
@@ -256,16 +274,6 @@ spec:
       input:
         message: repo  https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
         
-        
-    - id: create-argocd-resources
-      name: Create ArgoCD Resources
-      action: argocd:create-resources
-      input:
-        appName: ${{ parameters.component_id }}-bootstrap
-        argoInstance: main
-        namespace: janus-argocd
-        repoUrl: https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
-        path: 'argocd/'
 
 
     - id: provison pipeline
