@@ -158,7 +158,14 @@ spec:
             - AzureDevOps
             - Tekton
             
-            
+    - title: Fill in some steps
+    properties:
+      names:
+        title: Yes or No options
+        type: boolean
+        ui:widget: radio
+
+     
          
 
 
