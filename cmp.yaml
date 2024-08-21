@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-cloud-market-place
-  title: Pepsico Cloud Market Place 1.0
+  title: Pepsico Cloud Market Place 1.1
   description: Pepsico CMP Flow for Approval - Create ServiceNow Ticket
   tags:
     - service-now
@@ -16,32 +16,52 @@ spec:
   parameters:
     - title: Provide Name Entry for snow table 
       required:
-        - employeename
+        - project_sector
+        - project_ado_platform
+        - business_application
+        - application_service
+        - application_name
+        - application_owner
       properties:
-        employeename:
-          title: Requester Name
+        project_sector:
+          title: Project Sector
           type: string  
-        department:
-          title: Requester's Department
+        project_ado_platform:
+          title: Project ADO Platform
           type: string  
-        project:
-          title: Requester's Project
+        business_application:
+          title: Business Application
           type: string  
+        application_service:
+          title: Application Service
+          type: string 
+        application_name:
+          title: Application Name
+          type: string 
+        application_owner:
+          title: Application Owner
+          type: string 
+        
   steps:
     - id: snowcreate
       name: Snow
       action: servicenow:now:table:createRecord
       input:
-        tableName: u_employeename
+        tableName: x_1520818_pepsico_pepsionboarding
         requestBody: {
-          u_employeename: "${{ parameters.employeename }}",
-          u_department: "${{ parameters.department }}",
-          u_project: "${{ parameters.project }}"
-        }
+          project_sector: "${{ parameters.project_sector }}",
+          project_ado_platform: "${{ parameters.project_ado_platform }}",
+          business_application: "${{ parameters.business_application }}",
+          application_service: "${{ parameters.application_service }}",
+          application_name: "${{ parameters.application_name }}",
+          application_owner: "${{ parameters.application_owner }}"
+        
         
   output:
     text:
-    - title: Name Field
-      content: Entered Name "${{ parameters.employeename }}"
+    - title: Application Owner
+      content: Entered Name "${{ parameters.application_owner }}"
+    - title: Business Application
+      content: Business Application Access Approved "${{ parameters.business_application }}"
     - title: SysID
       content: Create record with this System ID "${{ steps.snowcreate.output.result.sys_id }}"
