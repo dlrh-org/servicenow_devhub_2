@@ -59,9 +59,9 @@ spec:
         
   output:
     text:
-    - title: Application Owner
-      content: Entered Name "${{ parameters.application_owner }}"
-    - title: Business Application
-      content: Business Application Access Approved "${{ parameters.business_application }}"
-    - title: SysID
-      content: Create record with this System ID "${{ steps.snowcreate.output.result.sys_id }}"
+      - title: Application Owner
+        content: Entered Name "${{ parameters.application_owner }}"
+      - title: Business Application
+        content: Business Application Access Approved "${{ parameters.business_application }}"
+      - title: SysID
+        content: Create record with this System ID "${{ steps.snowcreate.output.result.sys_id }}"
