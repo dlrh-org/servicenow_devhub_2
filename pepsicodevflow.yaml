@@ -161,7 +161,7 @@ spec:
               - 'Enable HPA'
               - 'Enable cache'
           uniqueItems: true
-          ui:widget: checkbox
+          ui:widget: checkboxes
             
    
 
