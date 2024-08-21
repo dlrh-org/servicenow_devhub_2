@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.0
+  title: Pepsico Dev Flow template 1.1
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -268,31 +268,17 @@ spec:
       input:
         amount: 1
 
-    - id: argocd-verification
-      name: ARGOCD Verification
+    - name: ADO Pipeline Configuration
+      if: ${{ parameters.pipeline === "AzureDevOps" }}
       action: debug:log
       input:
-        message: repo  https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{ parameters.component_id }}-gitops.git
-        
+        message: 'Configuring Azure Dev Ops!'
 
-
-    - id: provison pipeline
-      name: Provision Pipeline 
-      action: roadiehq:utils:sleep
-      input:
-        amount: 1
-
-    - id: gitlab-verification
-      name: Gitlab Verification
+    - name: Tekton Pipeline Configuration
+      if: ${{ parameters.pipeline === "Tekton" }}
       action: debug:log
       input:
-        message: Your Code is located at https://${{ parameters.repo.host }}/${{ parameters.repo.owner }}/${{parameters.component_id}}.git
-      
-    - id: pipeline-verification
-      name: Pipeline Verification
-      action: debug:log
-      input:
-        message: Pipeline Provisioned with ${{ parameters.pipeline }}
+        message: 'Configuring Tekton!'
 
     - id: reg-verification
       name: Registry Verification
