@@ -149,21 +149,20 @@ spec:
  
     - title: Pipeline Selection
       required:
-        - pipeline
-      properties:
-        pipeline:
-          title: Pick Your Project's Pipeline
-          type: string
+        - pipelines
+      pipelines:
+        title: Select pipeline
+        type: array
+        items:
+          type: boolean
           enum:
-            - AzureDevOps
-            - Tekton
+            - 'Enable scraping'
+            - 'Enable HPA'
+            - 'Enable cache'
+        uniqueItems: true
+        ui:widget: checkbox
             
-    - title: Fill in some steps
-    properties:
-      names:
-        title: Yes or No options
-        type: boolean
-        ui:widget: radio
+   
 
      
          
