@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-cloud-market-place
-  title: Pepsico Cloud Market Place 1.1
+  title: Pepsico Cloud Market Place 1.2
   description: Pepsico CMP Flow for Approval - Create ServiceNow Ticket
   tags:
     - service-now
