@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 2.3
+  title: Pepsico Dev Flow template 2.4
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -222,13 +222,16 @@ spec:
         repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}"
         repoVisibility: public
 
-    # common step for Tekton and AzureDevOps
-    - id: register
-      name: Register
+    # publish section - begin -  will have different outputs depending on the repo selected
+    - name: Register (Tekton/Gitlab)
+      id: register-tekton
       action: catalog:register
       input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        repoContentsUrl: ${{ steps.publish-tekton.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
+
+
+    # publish section - end - will have different outputs depending on the repo selected
 
     - name: Generating Deployment Resources (Tekton/Gitlab)
       id: template-gitops-deployment
