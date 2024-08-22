@@ -136,7 +136,6 @@ spec:
             repo:
             title: Repository Location
             type: object
-            properties:
             host:
               title: Repo Host
               type: string
