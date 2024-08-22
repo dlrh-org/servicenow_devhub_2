@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.5
+  title: Pepsico Dev Flow template 1.6
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -115,14 +115,28 @@ spec:
                  default: latest
                  type: string
                  description: Build Image tag
-    - title: Application repository Information
+
+    - title: Selection for Pipeline/Repository
       required:
-        - repo
+        -pipeline
       properties:
-        repo:
-          title: Repository Location
-          type: object
-          properties:
+        pipeline:
+          title: Pipeline/Repository
+          type: string
+          enum:
+            - AzureDevOps and AzureRepo
+            - Tekton and GitLab
+      dependencies:
+        pipeline:
+          oneOf:
+          - properties:
+            pipeline:
+              enum:
+                - Tekton and GitLab
+            repo:
+            title: Repository Location
+            type: object
+            properties:
             host:
               title: Repo Host
               type: string
@@ -145,41 +159,34 @@ spec:
               enum:
                 - enabled
                 - disabled
-
- 
-    - title: Pipeline Selection
-      required:
-        - pipelines
-      properties:
-        pipelines:
-          title: Select pipeline
-          type: array
-          items:
-            type: boolean
-            enum:
-              - 'Enable scraping'
-              - 'Enable HPA'
-              - 'Enable cache'
-          uniqueItems: true
-          ui:widget: checkboxes
-            
-   
-
-     
-         
-
+          - properties:
+            pipeline:
+              enum:
+                - AzureDevOps and AzureRepo
+            orgName:
+              title: Azure Organization Name
+              type: string
+            repoName:
+              title: Azure Repository Name
+              description: Unique name for this app Azure repository
+              default: my-pepsico-app
+              type: string
+          
 
   steps:
-  
+
+    # common step for Tekton and AzureDevOps
     - id: snowretrieve
       name: Verify ServiceNow Approval
       action: servicenow:now:table:retrieveRecord
       input:
         tableName: x_1520818_pepsico_pepsionboarding
         sysId: "${{ parameters.approvalcode }}"
-        
-    - id: template
-      name: Fetch Skeleton + Template
+
+
+    - name: Fetch Skeleton + Template (Tekton/GitLab)
+      id: template-tekton
+      if: ${{ parameters.pipeline === "Tekton and GitLab"}}    
       action: fetch:template
       input:
         url: ./skeleton
@@ -200,19 +207,22 @@ spec:
           port: 8080
           verify_commits: ${{ parameters.repo.verify_commits }}
 
-    - id: pub-verify
-      name: Publish Verification
+    - name: Publish Verification (Tekton/Gitlab)
+      id: pub-verify-tekton
+      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
       action: debug:log
       input:
         message:  ${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}
-      
-    - id: publish
-      name: Publish
+
+    - name: Publish (Tekton/Gitlab)
+      id: publish-tekton
+      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
       action: publish:gitlab
       input:
         repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}"
         repoVisibility: public
 
+    # common step for Tekton and AzureDevOps
     - id: register
       name: Register
       action: catalog:register
@@ -220,8 +230,9 @@ spec:
         repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
-    - id: template-gitops-deployment
-      name: Generating Deployment Resources
+    - name: Generating Deployment Resources (Tekton/Gitlab)
+      id: template-gitops-deployment
+      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
       action: fetch:template
       input:
         url: ./manifests
@@ -247,8 +258,9 @@ spec:
           verify_commits: ${{ parameters.repo.verify_commits }}
         targetPath: ./tenant-gitops
 
-    - id: publish-gitops
-      name: Publishing to Resource Repository
+    - name: Publishing to Resource Repository (Tekton/Gitlab)
+      id: publish-gitops
+      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
       action: publish:gitlab
       input:
         repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}-gitops"
@@ -257,8 +269,9 @@ spec:
         sourcePath: ./tenant-gitops
         repoVisibility: public
 
-    - id: create-argocd-resources
-      name: Create ArgoCD Resources
+    - name: Create ArgoCD Resources (Tekton/Gitlab)
+      id: create-argocd-resources
+      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
       action: argocd:create-resources
       input:
         appName: ${{ parameters.component_id }}-bootstrap
