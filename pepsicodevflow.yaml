@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 3.0
+  title: Pepsico Dev Flow template 3.1
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -239,7 +239,7 @@ spec:
       if: ${{ parameters.pipeline === "AzureDevOps/AzureRepo"}}
       action: fetch:template
       input:
-        url: ../../../skeletons/catalog-info/
+        url: ./skeletons/catalog-info/
         values:
           name: ${{ parameters.componentId }}
           orgName: ${{ parameters.orgName }}
