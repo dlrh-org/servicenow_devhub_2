@@ -217,8 +217,8 @@ spec:
     # publish section - begin -  will have different outputs depending on the repo selected
     
    
-    - id: publish-tekton
-      name: Publish
+    - id: publishtekton
+      name: Publish (Tekton/Gitlab)
       if: ${{ parameters.pipeline === "Tekton/GitLab"}}
       action: publish:gitlab
       input:
@@ -236,14 +236,14 @@ spec:
       if: ${{ parameters.pipeline === "Tekton/GitLab"}} 
       action: debug:log
       input:
-        message: repo content url ${{ steps.publish-tekton.output.repoContentsUrl }}
+        message: repo content url ${{ steps.publishtekton.output.repoContentsUrl }}
         
     - name: Register (Tekton/Gitlab)
       id: register-tekton
       if: ${{ parameters.pipeline === "Tekton/GitLab"}} 
       action: catalog:register
       input:
-        repoContentsUrl: ${{ steps.publish-tekton.output.repoContentsUrl }}
+        repoContentsUrl: ${{ steps.publishtekton.output.repoContentsUrl }}
         catalogInfoPath: "/catalog-info.yaml"
 
 
