@@ -124,15 +124,15 @@ spec:
           title: Pipeline/Repository
           type: string
           enum:
-            - AzureDevOps-AzureRepo
-            - Tekton-GitLab
+            - AzureDevOps
+            - Tekton
       dependencies:
         pipeline:
           oneOf:
           - properties:
             pipeline:
               enum:
-                - Tekton-GitLab
+                - Tekton
             repo:
             title: Repository Location
             type: object
@@ -161,7 +161,7 @@ spec:
           - properties:
             pipeline:
               enum:
-                - AzureDevOps-AzureRepo
+                - AzureDevOps
             orgName:
               title: Azure Organization Name
               type: string
