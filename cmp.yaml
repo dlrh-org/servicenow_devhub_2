@@ -48,7 +48,7 @@ spec:
       name: Snow
       action: servicenow:now:table:createRecord
       input:
-        tableName: x_1520818_pepsico_pepsionboarding
+        tableName: u_x_1520818_pepsico_pepsionboarding
         requestBody: {
           project_sector: "${{ parameters.project_sector }}",
           project_ado_platform: "${{ parameters.project_ado_platform }}",
