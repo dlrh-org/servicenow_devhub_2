@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 2.5
+  title: Pepsico Dev Flow template 2.6
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -226,6 +226,14 @@ spec:
     # publish section - end - will have different outputs depending on the repo selected
 
     # register section - begin -  will have different outputs depending on the repo selected
+
+    - name: Register Verification (Tekton/Gitlab)
+      id: pub-verify-tekton
+      if: ${{ parameters.pipeline === "Tekton/GitLab"}} 
+      action: debug:log
+      input:
+        message: repo content url ${{ steps.publish-tekton.output.repoContentsUrl }}
+        
     - name: Register (Tekton/Gitlab)
       id: register-tekton
       if: ${{ parameters.pipeline === "Tekton/GitLab"}} 
