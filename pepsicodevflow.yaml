@@ -136,28 +136,29 @@ spec:
               repo:
                 title: Repository Location
                 type: object
-              host:
-                title: Repo Host
-                type: string
-                description: Your SCM host
-                default: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
-                enum:
-                - gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
-              owner:
-                title: Repo Owner
-                type: string
-                description: Your SCM host organization/group
-                default: development
-                enum:
-                  - development 
-              verify_commits:
-                title: Verify Commits
-                type: string
-                description: Verify Git repository commits using Red Hat’s Trusted Artifact Signer (TAS)
-                default: disabled
-                enum:
-                  - enabled
-                  - disabled
+                properties:
+                  host:
+                    title: Repo Host
+                    type: string
+                    description: Your SCM host
+                    default: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
+                    enum:
+                      - gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
+                  owner:
+                    title: Repo Owner
+                    type: string
+                    description: Your SCM host organization/group
+                    default: development
+                    enum:
+                    - development 
+                  verify_commits:
+                    title: Verify Commits
+                    type: string
+                    description: Verify Git repository commits using Red Hat’s Trusted Artifact Signer (TAS)
+                    default: disabled
+                    enum:
+                      - enabled
+                      - disabled
           - properties:
               pipeline:
                 enum:
