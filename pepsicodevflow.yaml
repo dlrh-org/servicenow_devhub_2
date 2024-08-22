@@ -121,7 +121,7 @@ spec:
         -pipeline
       properties:
         pipeline:
-          title: Pipeline/Repository
+          title: Pipeline Repository
           type: string
           enum:
             - AzureDevOps
@@ -130,46 +130,46 @@ spec:
         pipeline:
           oneOf:
           - properties:
-            pipeline:
-              enum:
+              pipeline:
+                enum:
                 - Tekton
-            repo:
-            title: Repository Location
-            type: object
-            host:
-              title: Repo Host
-              type: string
-              description: Your SCM host
-              default: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
-              enum:
+              repo:
+                title: Repository Location
+                type: object
+              host:
+                title: Repo Host
+                type: string
+                description: Your SCM host
+                default: gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
+                enum:
                 - gitlab-gitlab.apps.cluster-qmdjh.qmdjh.sandbox1439.opentlc.com
-            owner:
-              title: Repo Owner
-              type: string
-              description: Your SCM host organization/group
-              default: development
-              enum:
-                - development 
-            verify_commits:
-              title: Verify Commits
-              type: string
-              description: Verify Git repository commits using Red Hat’s Trusted Artifact Signer (TAS)
-              default: disabled
-              enum:
-                - enabled
-                - disabled
+              owner:
+                title: Repo Owner
+                type: string
+                description: Your SCM host organization/group
+                default: development
+                enum:
+                  - development 
+              verify_commits:
+                title: Verify Commits
+                type: string
+                description: Verify Git repository commits using Red Hat’s Trusted Artifact Signer (TAS)
+                default: disabled
+                enum:
+                  - enabled
+                  - disabled
           - properties:
-            pipeline:
-              enum:
-                - AzureDevOps
-            orgName:
-              title: Azure Organization Name
-              type: string
-            repoName:
-              title: Azure Repository Name
-              description: Unique name for this app Azure repository
-              default: my-pepsico-app
-              type: string
+              pipeline:
+                enum:
+                  - AzureDevOps
+              orgName:
+                title: Azure Organization Name
+                type: string
+              repoName:
+                title: Azure Repository Name
+                description: Unique name for this app Azure repository
+                default: my-pepsico-app
+                type: string
           
 
   steps:
