@@ -118,7 +118,7 @@ spec:
 
     - title: Selection for Pipeline/Repository
       required:
-        -pipeline
+        - pipeline
       properties:
         pipeline:
           title: Pipeline Repository
