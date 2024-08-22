@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: pepsico-dev-template
-  title: Pepsico Dev Flow template 1.6
+  title: Pepsico Dev Flow template 1.7
   description: The Pepsico Dev Flow
   tags:
     - service-now
@@ -124,15 +124,15 @@ spec:
           title: Pipeline/Repository
           type: string
           enum:
-            - AzureDevOps and AzureRepo
-            - Tekton and GitLab
+            - AzureDevOps-AzureRepo
+            - Tekton-GitLab
       dependencies:
         pipeline:
           oneOf:
           - properties:
             pipeline:
               enum:
-                - Tekton and GitLab
+                - Tekton-GitLab
             repo:
             title: Repository Location
             type: object
@@ -161,7 +161,7 @@ spec:
           - properties:
             pipeline:
               enum:
-                - AzureDevOps and AzureRepo
+                - AzureDevOps-AzureRepo
             orgName:
               title: Azure Organization Name
               type: string
@@ -185,7 +185,7 @@ spec:
 
     - name: Fetch Skeleton + Template (Tekton/GitLab)
       id: template-tekton
-      if: ${{ parameters.pipeline === "Tekton and GitLab"}}    
+      if: ${{ parameters.pipeline === "Tekton-GitLab"}}    
       action: fetch:template
       input:
         url: ./skeleton
@@ -208,14 +208,14 @@ spec:
 
     - name: Publish Verification (Tekton/Gitlab)
       id: pub-verify-tekton
-      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
+      if: ${{ parameters.pipeline === "Tekton-GitLab"}} 
       action: debug:log
       input:
         message:  ${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}
 
     - name: Publish (Tekton/Gitlab)
       id: publish-tekton
-      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
+      if: ${{ parameters.pipeline === "Tekton-GitLab"}} 
       action: publish:gitlab
       input:
         repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}"
@@ -231,7 +231,7 @@ spec:
 
     - name: Generating Deployment Resources (Tekton/Gitlab)
       id: template-gitops-deployment
-      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
+      if: ${{ parameters.pipeline === "Tekton-GitLab"}} 
       action: fetch:template
       input:
         url: ./manifests
@@ -259,7 +259,7 @@ spec:
 
     - name: Publishing to Resource Repository (Tekton/Gitlab)
       id: publish-gitops
-      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
+      if: ${{ parameters.pipeline === "Tekton-GitLab"}} 
       action: publish:gitlab
       input:
         repoUrl: "${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}-gitops"
@@ -270,7 +270,7 @@ spec:
 
     - name: Create ArgoCD Resources (Tekton/Gitlab)
       id: create-argocd-resources
-      if: ${{ parameters.pipeline === "Tekton and GitLab"}} 
+      if: ${{ parameters.pipeline === "Tekton-GitLab"}} 
       action: argocd:create-resources
       input:
         appName: ${{ parameters.component_id }}-bootstrap
