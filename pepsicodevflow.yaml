@@ -215,8 +215,9 @@ spec:
         message:  ${{ parameters.repo.host }}?owner=${{ parameters.repo.owner }}&repo=${{parameters.component_id}}
 
     # publish section - begin -  will have different outputs depending on the repo selected
-    - name: Publish (Tekton/Gitlab)
-      id: publish-tekton
+    
+    - id: publish-tekton
+      name: Publish (Tekton/Gitlab)
       if: ${{ parameters.pipeline === "Tekton/GitLab"}} 
       action: publish:gitlab
       input:
